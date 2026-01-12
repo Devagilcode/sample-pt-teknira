@@ -10,6 +10,7 @@ body {
   color: #1f2933;
 }
 
+/* CONTAINER */
 .container {
   max-width: 1200px;
   margin: auto;
@@ -38,8 +39,8 @@ body {
 
 .nav-links {
   display: flex;
-  list-style: none;
   gap: 25px;
+  list-style: none;
 }
 
 .nav-links a {
@@ -55,13 +56,13 @@ body {
 .menu-toggle {
   display: none;
   font-size: 26px;
+  cursor: pointer;
 }
 
 /* HERO */
 .hero {
   height: 100vh;
-  background: url("https://images.unsplash.com/photo-1581092795360-fd1ca04f0952")
-    center/cover;
+  background: url("https://images.unsplash.com/photo-1581092795360-fd1ca04f0952") center/cover;
   position: relative;
   display: flex;
   align-items: center;
@@ -89,7 +90,7 @@ body {
   padding: 100px 0;
 }
 
-.bg-white { background: white; }
+.bg-white { background: #fff; }
 .bg-light { background: #eef2f7; }
 
 /* GRID */
@@ -105,15 +106,15 @@ body {
   gap: 30px;
 }
 
-/* ABOUT */
+/* TITLES */
 .section-title {
   text-align: center;
   font-size: 32px;
-  font-weight: 700;
   color: #0b63ce;
   margin-bottom: 30px;
 }
 
+/* ABOUT */
 .about-desc {
   max-width: 900px;
   margin: 0 auto 60px;
@@ -122,7 +123,7 @@ body {
 }
 
 .about-card {
-  background: white;
+  background: #fff;
   padding: 35px;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,.08);
@@ -135,7 +136,7 @@ body {
 
 /* CARD */
 .card {
-  background: white;
+  background: #fff;
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,.08);
@@ -208,7 +209,7 @@ body {
 .animate {
   opacity: 0;
   transform: translateY(40px);
-  transition: .8s;
+  transition: .8s ease;
 }
 
 .animate.show {
@@ -216,20 +217,51 @@ body {
   transform: translateY(0);
 }
 
-/* RESPONSIVE */
+/* OFFCANVAS MOBILE NAV */
 @media (max-width: 900px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 260px;
+    height: 100vh;
+    background: #fff;
+    flex-direction: column;
+    padding: 90px 30px;
+    gap: 25px;
+    transition: 0.35s ease;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.15);
+    z-index: 1001;
+  }
+
+  .nav-links.show {
+    right: 0;
+  }
+
+  .nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 1000;
+  }
+
+  .nav-overlay.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+
   .grid-2,
   .grid-3,
   .footer-grid {
     grid-template-columns: 1fr;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: block;
   }
 
   .hero h1 {
